@@ -1,0 +1,1 @@
+# configUbuntuTerm
