@@ -1,0 +1,505 @@
+<?xml version="1.0"?>
+
+<interface>
+
+  <requires lib="gtk+" version="2.16"/>
+
+  <!-- interface-naming-policy project-wide -->
+
+  <object class="GtkWindow" id="fenetre">
+
+    <property name="visible">True</property>
+
+    <property name="title" translatable="yes">&#xC9;diteur de texte en PyGtk</property>
+
+    <property name="icon">editeurDeTexteIco.png</property>
+
+    <accel-groups>
+
+      <group name="accelgroup1"/>
+
+    </accel-groups>
+
+    <signal name="destroy" handler="quitter"/>
+
+    <signal name="delete_event" handler="detruireFen"/>
+
+    <child>
+
+      <object class="GtkVBox" id="boiteV">
+
+        <property name="visible">True</property>
+
+        <property name="orientation">vertical</property>
+
+        <child>
+
+          <object class="GtkMenuBar" id="barreMenu">
+
+            <property name="visible">True</property>
+
+            <child>
+
+              <object class="GtkMenuItem" id="menuitem1">
+
+                <property name="visible">True</property>
+
+                <property name="label" translatable="yes">_Fichier</property>
+
+                <property name="use_underline">True</property>
+
+                <child type="submenu">
+
+                  <object class="GtkMenu" id="menu1">
+
+                    <property name="visible">True</property>
+
+                    <child>
+
+                      <object class="GtkImageMenuItem" id="nouveau">
+
+                        <property name="label">gtk-new</property>
+
+                        <property name="visible">True</property>
+
+                        <property name="use_underline">True</property>
+
+                        <property name="use_stock">True</property>
+
+                        <property name="accel_group">accelgroup1</property>
+
+                        <signal name="activate" handler="nouveau"/>
+
+                      </object>
+
+                    </child>
+
+                    <child>
+
+                      <object class="GtkImageMenuItem" id="ouvrir">
+
+                        <property name="label">gtk-open</property>
+
+                        <property name="visible">True</property>
+
+                        <property name="use_underline">True</property>
+
+                        <property name="use_stock">True</property>
+
+                        <property name="accel_group">accelgroup1</property>
+
+                        <signal name="activate" handler="ouvrirFichierDialogue"/>
+
+                      </object>
+
+                    </child>
+
+                    <child>
+
+                      <object class="GtkImageMenuItem" id="enregistrer">
+
+                        <property name="label">gtk-save</property>
+
+                        <property name="visible">True</property>
+
+                        <property name="use_underline">True</property>
+
+                        <property name="use_stock">True</property>
+
+                        <property name="accel_group">accelgroup1</property>
+
+                        <signal name="activate" handler="enregistrer"/>
+
+                      </object>
+
+                    </child>
+
+                    <child>
+
+                      <object class="GtkImageMenuItem" id="enregistrerSous">
+
+                        <property name="label">gtk-save-as</property>
+
+                        <property name="visible">True</property>
+
+                        <property name="use_underline">True</property>
+
+                        <property name="use_stock">True</property>
+
+                        <property name="accel_group">accelgroup1</property>
+
+                        <signal name="activate" handler="enregistrerSous"/>
+
+                      </object>
+
+                    </child>
+
+                    <child>
+
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem1">
+
+                        <property name="visible">True</property>
+
+                      </object>
+
+                    </child>
+
+                    <child>
+
+                      <object class="GtkImageMenuItem" id="fermer">
+
+                        <property name="label">gtk-close</property>
+
+                        <property name="visible">True</property>
+
+                        <property name="use_underline">True</property>
+
+                        <property name="use_stock">True</property>
+
+                        <property name="accel_group">accelgroup1</property>
+
+                        <signal name="activate" handler="fermer"/>
+
+                      </object>
+
+                    </child>
+
+                    <child>
+
+                      <object class="GtkImageMenuItem" id="quitter">
+
+                        <property name="label">gtk-quit</property>
+
+                        <property name="visible">True</property>
+
+                        <property name="use_underline">True</property>
+
+                        <property name="use_stock">True</property>
+
+                        <property name="accel_group">accelgroup1</property>
+
+                        <signal name="activate" handler="quitter"/>
+
+                      </object>
+
+                    </child>
+
+                  </object>
+
+                </child>
+
+              </object>
+
+            </child>
+
+            <child>
+
+              <object class="GtkMenuItem" id="menuitem4">
+
+                <property name="visible">True</property>
+
+                <property name="label" translatable="yes">Aid_e</property>
+
+                <property name="use_underline">True</property>
+
+                <child type="submenu">
+
+                  <object class="GtkMenu" id="menu3">
+
+                    <property name="visible">True</property>
+
+                    <child>
+
+                      <object class="GtkImageMenuItem" id="aPropos">
+
+                        <property name="label">gtk-about</property>
+
+                        <property name="visible">True</property>
+
+                        <property name="use_underline">True</property>
+
+                        <property name="use_stock">True</property>
+
+                        <property name="accel_group">accelgroup1</property>
+
+                        <signal name="activate" handler="aPropos"/>
+
+                      </object>
+
+                    </child>
+
+                  </object>
+
+                </child>
+
+              </object>
+
+            </child>
+
+          </object>
+
+          <packing>
+
+            <property name="expand">False</property>
+
+            <property name="position">0</property>
+
+          </packing>
+
+        </child>
+
+        <child>
+
+          <object class="GtkToolbar" id="barreOutils">
+
+            <property name="visible">True</property>
+
+            <child>
+
+              <object class="GtkToolButton" id="nouveau1">
+
+                <property name="visible">True</property>
+
+                <property name="label" translatable="yes">Nouveau</property>
+
+                <property name="use_underline">True</property>
+
+                <property name="stock_id">gtk-new</property>
+
+                <signal name="clicked" handler="nouveau"/>
+
+              </object>
+
+              <packing>
+
+                <property name="expand">False</property>
+
+                <property name="homogeneous">True</property>
+
+              </packing>
+
+            </child>
+
+            <child>
+
+              <object class="GtkToolButton" id="toolbutton1">
+
+                <property name="visible">True</property>
+
+                <property name="label" translatable="yes">Ouvrir</property>
+
+                <property name="use_underline">True</property>
+
+                <property name="stock_id">gtk-open</property>
+
+                <signal name="clicked" handler="ouvrirFichierDialogue"/>
+
+              </object>
+
+              <packing>
+
+                <property name="expand">False</property>
+
+                <property name="homogeneous">True</property>
+
+              </packing>
+
+            </child>
+
+            <child>
+
+              <object class="GtkToolButton" id="toolbutton2">
+
+                <property name="visible">True</property>
+
+                <property name="label" translatable="yes">Enregistrer</property>
+
+                <property name="use_underline">True</property>
+
+                <property name="stock_id">gtk-save</property>
+
+                <signal name="clicked" handler="enregistrer"/>
+
+              </object>
+
+              <packing>
+
+                <property name="expand">False</property>
+
+                <property name="homogeneous">True</property>
+
+              </packing>
+
+            </child>
+
+            <child>
+
+              <object class="GtkToolButton" id="toolbutton3">
+
+                <property name="visible">True</property>
+
+                <property name="label" translatable="yes">Enregistrer sous...</property>
+
+                <property name="use_underline">True</property>
+
+                <property name="stock_id">gtk-save-as</property>
+
+                <signal name="clicked" handler="enregistrerSous"/>
+
+              </object>
+
+              <packing>
+
+                <property name="expand">False</property>
+
+                <property name="homogeneous">True</property>
+
+              </packing>
+
+            </child>
+
+            <child>
+
+              <object class="GtkSeparatorToolItem" id="separateur">
+
+                <property name="visible">True</property>
+
+              </object>
+
+              <packing>
+
+                <property name="expand">False</property>
+
+                <property name="homogeneous">True</property>
+
+              </packing>
+
+            </child>
+
+            <child>
+
+              <object class="GtkToolButton" id="toolbutton5">
+
+                <property name="visible">True</property>
+
+                <property name="label" translatable="yes">&#xC0; propos</property>
+
+                <property name="use_underline">True</property>
+
+                <property name="stock_id">gtk-about</property>
+
+                <signal name="clicked" handler="aPropos"/>
+
+              </object>
+
+              <packing>
+
+                <property name="expand">False</property>
+
+                <property name="homogeneous">True</property>
+
+              </packing>
+
+            </child>
+
+            <child>
+
+              <object class="GtkToolButton" id="fermer1">
+
+                <property name="visible">True</property>
+
+                <property name="label" translatable="yes">Fermer</property>
+
+                <property name="use_underline">True</property>
+
+                <property name="stock_id">gtk-close</property>
+
+                <signal name="clicked" handler="fermer"/>
+
+              </object>
+
+              <packing>
+
+                <property name="expand">False</property>
+
+                <property name="homogeneous">True</property>
+
+              </packing>
+
+            </child>
+
+            <child>
+
+              <object class="GtkToolButton" id="toolbutton4">
+
+                <property name="visible">True</property>
+
+                <property name="label" translatable="yes">Quitter</property>
+
+                <property name="use_underline">True</property>
+
+                <property name="stock_id">gtk-quit</property>
+
+                <signal name="clicked" handler="quitter"/>
+
+              </object>
+
+              <packing>
+
+                <property name="expand">False</property>
+
+                <property name="homogeneous">True</property>
+
+              </packing>
+
+            </child>
+
+          </object>
+
+          <packing>
+
+            <property name="expand">False</property>
+
+            <property name="position">1</property>
+
+          </packing>
+
+        </child>
+
+        <child>
+
+          <object class="GtkScrolledWindow" id="barresDefilement">
+
+            <property name="visible">True</property>
+
+            <property name="can_focus">True</property>
+
+            <property name="hscrollbar_policy">automatic</property>
+
+            <property name="vscrollbar_policy">automatic</property>
+
+            <child>
+
+              <placeholder/>
+
+            </child>
+
+          </object>
+
+          <packing>
+
+            <property name="position">2</property>
+
+          </packing>
+
+        </child>
+
+      </object>
+
+    </child>
+
+  </object>
+
+  <object class="GtkAccelGroup" id="accelgroup1"/>
+
+</interface>
